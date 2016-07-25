@@ -9,6 +9,10 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
+- url: /dab\.js
+  static_files: dab.js
+  upload: dab\.js
+
 - url: .*
   script: main.app
 
