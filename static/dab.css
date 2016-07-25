@@ -28,6 +28,11 @@ h2 {
   font-size: 40px;
 }
 
+form {
+  font-size: 40px;
+  font-family: 'Product Sans', Arial, sans-serif;
+}
+
 input {
   font-size: 20px;
 }
