@@ -2,10 +2,13 @@ import jinja2
 import os
 import webapp2
 
-#from google.appengine.ext import ndb
+from google.appengine.ext import ndb
 
-#class Checkin1(ndb.Model):
-#    checkinName = ndb.StringProperty(required=True)
+class CheckIn(ndb.Model):
+    name = ndb.StringProperty()
+    location_atm = ndb.StringProperty()
+    time_stamp = ndb.DateTimeProperty(auto_now_add=True)
+
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(
@@ -14,21 +17,22 @@ jinja_environment = jinja2.Environment(
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = template = jinja_environment.get_template('dab.html')
-        html = template.render({})
-        self.response.write(html)
+        self.response.out.write(template.render())
+    def post(self):
+            name = self.request.get('name')
+            location_atm = self.request.get('location_atm')
+            check_in = CheckIn(name=name, location_atm=location_atm)
+            check_in.put()
 
-#class CheckinHandler(webapp2.RequestHandler):
-#    def get(self):
-#        self.response.write('Check in:<br>')
-#        checkin_name_query = Checkin1.query()
-#        current_check_in = checkin_name_query.fetch(limit=30)
-#        for checkinName in current_check_in:
-#            self.response.write(checkinName)
-            #self.response.write(' ')
-            #self.response.write(checkinName.checkinName)
-            #self.response.write('<br>')
+class CheckInHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write('Check in:<br>')
+        check_in_query = CheckIn.query().order(CheckIn.time_stamp)
+        check_ins = check_in_query.fetch()
+        for check_in in check_ins:
+            self.response.write(check_in.name + "<br>" + " - " + check_in.location_atm + "<br>" + str(check_in.time_stamp))
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)#,
-    #('/checkin', CheckinHandler),
+    ('/', MainHandler),
+    ('/checkin', CheckInHandler),
 ], debug=True)
