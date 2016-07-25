@@ -3,11 +3,15 @@ h1 {
   font-family: 'Product Sans', Arial, sans-serif;
   font-size: 60px;
   color: 	white;
-  background-color: black; opacity: 0.5;
+  background-color: black; opacity: 0.6;
 }
 
 body {
     text-align: center;
+    background-image: url("http://d3trabu2dfbdfb.cloudfront.net/3/7/th3797_o.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .C {
@@ -41,14 +45,13 @@ body {
 #clock {
     height: 100px;
     width: 500px;
-    margin: auto;
     position: relative;
-    top: 0; left: 0; right: 100px; bottom: 0;
     padding-top: 70px;
+    padding-bottom: 70px;
     font-family: 'Product Sans', Arial, sans-serif;
-    text-align: left;
-    color: black;
+    color: white;
     font-size: 100px;
+
 }
 
 h2 {
@@ -59,8 +62,10 @@ h2 {
 form {
   font-size: 40px;
   font-family: 'Product Sans', Arial, sans-serif;
+  color: white;
 }
 
 input {
   font-size: 20px;
+  color: white;
 }
