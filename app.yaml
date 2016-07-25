@@ -13,6 +13,10 @@ handlers:
   static_files: dab.js
   upload: dab\.js
 
+- url: /dab\.css
+  static_files: static/dab.css
+  upload: static/dab\.css
+
 - url: .*
   script: main.app
 
