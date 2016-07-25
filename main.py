@@ -1,6 +1,7 @@
 import jinja2
 import os
 import webapp2
+from google.appengine.ext import ndb
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(
@@ -12,6 +13,9 @@ class MainHandler(webapp2.RequestHandler):
         html = template.render({})
         self.response.write(html)
 
+	def post(self):
+		self.response.write(name_process(self.request.get("name")))
+
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler) 
 ], debug=True)
