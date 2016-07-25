@@ -1,6 +1,9 @@
-body {
-    background-color: blue;
-}
-h2 {
+
+form {
   text-align: center;
+  font-size: 40px;
+}
+
+input {
+  font-size: 20px;
 }
