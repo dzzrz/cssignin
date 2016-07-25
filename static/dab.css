@@ -1,3 +1,4 @@
+
 body {
     background-color: blue;
 }
@@ -16,5 +17,11 @@ body {
 }
 
 h2 {
+  
   text-align: center;
+  font-size: 40px;
+}
+
+input {
+  font-size: 20px;
 }
