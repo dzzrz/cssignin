@@ -1,10 +1,14 @@
 import jinja2
 import os
 import webapp2
+<<<<<<< HEAD
 #from google.appengine.ext import ndb
 
 #class Checkin1(ndb.Model):
 #    checkinName = ndb.StringProperty(required=True)
+=======
+from google.appengine.ext import ndb
+>>>>>>> e34f787137ce03a46f3bedafe55e6ed5172c8c65
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(
@@ -16,6 +20,7 @@ class MainHandler(webapp2.RequestHandler):
         html = template.render({})
         self.response.write(html)
 
+<<<<<<< HEAD
 #class CheckinHandler(webapp2.RequestHandler):
 #    def get(self):
 #        self.response.write('Check in:<br>')
@@ -30,4 +35,11 @@ class MainHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler)#,
     #('/checkin', CheckinHandler),
+=======
+	def post(self):
+		self.response.write(name_process(self.request.get("name")))
+
+app = webapp2.WSGIApplication([
+    ('/', MainHandler) 
+>>>>>>> e34f787137ce03a46f3bedafe55e6ed5172c8c65
 ], debug=True)
