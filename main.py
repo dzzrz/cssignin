@@ -28,22 +28,7 @@ class MainHandler(webapp2.RequestHandler):
             #self.response.write(checkinName.checkinName)
             #self.response.write('<br>')
 
-#class CheckinHandler(webapp2.RequestHandler):
-#    def get(self):
-#        self.response.write('Check in:<br>')
-#        checkin_name_query = Checkin1.query()
-#        current_check_in = checkin_name_query.fetch(limit=30)
-#        for checkinName in current_check_in:
-#            self.response.write(checkinName)
-            #self.response.write(' ')
-            #self.response.write(checkinName.checkinName)
-            #self.response.write('<br>')
-
 app = webapp2.WSGIApplication([
     ('/', MainHandler)#,
     #('/checkin', CheckinHandler),
-<<<<<<< HEAD
 ], debug=True)
-=======
-], debug=True)
->>>>>>> d7755f42b63e027c4fc569eea94eb2bd0d774a7c
