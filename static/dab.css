@@ -35,6 +35,7 @@ body {
     font-family: 'Product Sans', Arial, sans-serif;
     color: white;
     font-size: 100px;
+    text-shadow: 2px 2px 0px black;
 
 }
 
@@ -47,6 +48,7 @@ form {
   font-size: 40px;
   font-family: 'Product Sans', Arial, sans-serif;
   color: white;
+  text-shadow: 2px 2px 0px black;
 }
 
 input {
@@ -60,18 +62,22 @@ input {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 870px;
  }
 .sunset {
-  background: url('https://photos.smugmug.com/Galleries/Boston/Boston-Skyline-and-Bridges/i-XdJpLLG/3/L/greg-dubois-piers-park-east-boston-stormy-pink-sunset-over-boston-skyline-and-boston-harbor-with-water-blur-summer-long-exposure-240ppi-L.jpg');
+  background: url('http://www.skycamusa.com/images/boston_aerial_drone_photography.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  width: 700px;
+
  }
 .night {
   background: url('http://www.strategygroupinc.com/images/o-BOSTON-facebook.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 870px;
  }
 
 #date {
@@ -80,4 +86,5 @@ input {
   font-size: 40px;
   text-align: left;
   padding-left: 50px;
+  text-shadow: 2px 2px 0px black;
 }
