@@ -32,6 +32,7 @@ class CheckInHandler(webapp2.RequestHandler):
         for check_in in check_ins:
             self.response.write(check_in.name + "<br>" + " - " + check_in.location_atm + "<br>" + str(check_in.time_stamp))
 
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/checkin', CheckInHandler),
