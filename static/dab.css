@@ -8,10 +8,6 @@ h1 {
 
 body {
     text-align: center;
-    background-image: url("http://d3trabu2dfbdfb.cloudfront.net/3/7/th3797_o.jpeg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .C {
@@ -34,7 +30,7 @@ body {
     height: 100px;
     width: 500px;
     position: relative;
-    padding-top: 70px;
+    padding-top: 10px;
     padding-bottom: 70px;
     font-family: 'Product Sans', Arial, sans-serif;
     color: white;
@@ -57,4 +53,31 @@ input {
   font-size: 20px;
   color: white;
   background-color: black; opacity: 0.6;
+}
+
+.day {
+  background: url('http://d3trabu2dfbdfb.cloudfront.net/3/7/th3797_o.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ }
+.sunset {
+  background: url('https://photos.smugmug.com/Galleries/Boston/Boston-Skyline-and-Bridges/i-XdJpLLG/3/L/greg-dubois-piers-park-east-boston-stormy-pink-sunset-over-boston-skyline-and-boston-harbor-with-water-blur-summer-long-exposure-240ppi-L.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ }
+.night {
+  background: url('http://www.strategygroupinc.com/images/o-BOSTON-facebook.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ }
+
+#date {
+  color: white;
+  font-family: 'Product Sans', Arial, sans-serif;
+  font-size: 40px;
+  text-align: left;
+  padding-left: 50px;
 }

@@ -31,7 +31,7 @@ class CheckInHandler(webapp2.RequestHandler, ndb.Model):
         check_ins = check_in_query.fetch()
         for check_in in check_ins:
             self.response.write("<br>" + check_in.name + "<br>" + " - " + check_in.location_atm + "<br>" + str(check_in.time_stamp) + " " + str(check_in.date_stamp))
-            
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/checkin', CheckInHandler),
