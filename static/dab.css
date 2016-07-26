@@ -4,10 +4,13 @@ h1 {
   font-size: 60px;
   color: 	white;
   background-color: black; opacity: 0.6;
+  margin-top: 0;
 }
 
 body {
-    text-align: center;
+  text-align: center;
+  margin: 0;
+  margin-top: 0;
 }
 
 .C {
@@ -27,15 +30,15 @@ body {
 }
 
 #clock {
-    height: 100px;
-    width: 500px;
-    position: relative;
-    padding-top: 10px;
-    padding-bottom: 70px;
-    font-family: 'Product Sans', Arial, sans-serif;
-    color: white;
-    font-size: 100px;
-    text-shadow: 2px 2px 0px black;
+  height: 100px;
+  width: 500px;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 70px;
+  font-family: 'Product Sans', Arial, sans-serif;
+  color: white;
+  font-size: 100px;
+  text-shadow: 2px 2px 0px black;
 
 }
 
@@ -89,6 +92,7 @@ input {
   text-shadow: 2px 2px 0px black;
 }
 
+<<<<<<< HEAD
 body {
   padding: 45px 25px;
   font: 13px 'Open Sans', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -201,3 +205,77 @@ button {
   border: 0;
   border-radius: 5px;
 }
+=======
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #555;
+  color: white;
+}
+
+.menu {
+  font-size: 25px;
+}
+
+table { 
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  width: 100%; 
+  border-collapse: 
+  collapse; border-spacing: 0; 
+  margin-left:auto; 
+  margin-right:auto;
+}
+
+td, th { 
+  border: 1px solid transparent; /* No more visible border */
+  height: 30px; 
+  transition: all 0.3s;  /* Simple transition for hover effect */
+}
+
+th {
+  background: #DFDFDF;  /* Darken header a bit */
+  font-weight: bold;
+}
+
+td {
+  background: #FAFAFA;
+  text-align: center;
+}
+
+/* Cells in even rows (2,4,6...) are one color */ 
+tr:nth-child(even) td { 
+  background: #F1F1F1; 
+}   
+
+/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */ 
+tr:nth-child(odd) td { 
+  background: #FEFEFE; 
+}  
+
+/* This is commenting out hovering over and changing color feature
+tr td:hover { 
+background: #666; color: #FFF; 
+} 
+
+Hover cell effect!
+
+*/
+>>>>>>> 065652ded7ad0be93f5e5f6104c1bd779cb9f352
