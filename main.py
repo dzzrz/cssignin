@@ -7,9 +7,8 @@ from google.appengine.ext import ndb
 class CheckIn(ndb.Model):
     name = ndb.StringProperty()
     location_atm = ndb.StringProperty()
-    time_stamp = ndb.DateTimeProperty(auto_now_add=True)
-
-
+    time_stamp = ndb.TimeProperty(auto_now_add=True)
+    date_stamp = ndb.DateProperty(auto_now_add=True)
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(
   loader=jinja2.FileSystemLoader(template_dir))
@@ -23,6 +22,7 @@ class MainHandler(webapp2.RequestHandler):
             location_atm = self.request.get('location_atm')
             check_in = CheckIn(name=name, location_atm=location_atm)
             check_in.put()
+            self.redirect('/checkin')
 
 class CheckInHandler(webapp2.RequestHandler):
     def get(self):
@@ -30,7 +30,7 @@ class CheckInHandler(webapp2.RequestHandler):
         check_in_query = CheckIn.query().order(CheckIn.time_stamp)
         check_ins = check_in_query.fetch()
         for check_in in check_ins:
-            self.response.write(check_in.name + "<br>" + " - " + check_in.location_atm + "<br>" + str(check_in.time_stamp))
+            self.response.write("<br>" + check_in.name + "<br>" + " - " + check_in.location_atm + "<br>" + str(check_in.time_stamp) + " " + str(check_in.date_stamp))
 
 
 app = webapp2.WSGIApplication([
