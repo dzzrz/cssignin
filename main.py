@@ -29,11 +29,14 @@ class MainHandler(webapp2.RequestHandler):
 
 class CheckInHandler(webapp2.RequestHandler, ndb.Model):
     def get(self):
-        self.response.write('Check in:<br>')
+        #self.response.write('Check in:<br>')
         check_in_query = CheckIn.query().order(CheckIn.time_stamp).filter(CheckIn.time_stamp >= datetime.now().replace( hour=0 ))
         check_ins = check_in_query.fetch()
         for check_in in check_ins:
             self.response.write("<br>" + check_in.name + "<br>" + " - " + check_in.location_atm + "<br>" + str(check_in.time_stamp))
+
+
+
 
 class MenuHandlerHome(webapp2.RequestHandler):
     def get(self):
@@ -49,6 +52,10 @@ class MenuHandlerGoogle(webapp2.RequestHandler):
     def get(self):
         template = template = jinja_environment.get_template('google.html')
         self.response.out.write(template.render())
+
+
+
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
