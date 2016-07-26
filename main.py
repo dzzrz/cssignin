@@ -1,6 +1,7 @@
 import jinja2
 import os
 import webapp2
+import datetime
 import urllib2
 import json
 from datetime import datetime
@@ -39,7 +40,25 @@ class CheckInHandler(webapp2.RequestHandler, ndb.Model):
         for check_in in check_ins:
             self.response.write("<br>" + check_in.name + "<br>" + " - " + check_in.location_atm + "<br>" + str(check_in.time_stamp))
 
+class MenuHandlerHome(webapp2.RequestHandler):
+    def get(self):
+        template = template = jinja_environment.get_template('dab.html')
+        self.response.out.write(template.render())
+
+class MenuHandlerSignIn(webapp2.RequestHandler):
+    def get(self):
+        template = template = jinja_environment.get_template('display.html')
+        self.response.out.write(template.render())
+
+class MenuHandlerGoogle(webapp2.RequestHandler):
+    def get(self):
+        template = template = jinja_environment.get_template('google.html')
+        self.response.out.write(template.render())
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/checkin', CheckInHandler),
+    ('/dab.html', MenuHandlerHome),
+    ('/display.html', MenuHandlerSignIn),
+    ('/google.html', MenuHandlerGoogle)
 ], debug=True)

@@ -18,6 +18,7 @@ $(document).ready( function() {
   displayTime();
   setInterval(displayTime, 1000);
 
+
     var d = new Date();
 	  var n = d.getHours();
 	  if (n > 19 || n < 6)
@@ -29,6 +30,5 @@ $(document).ready( function() {
 	  else
 	  // Else use ‘day’ theme
 	   document.body.className = "day";
-
 
 });
