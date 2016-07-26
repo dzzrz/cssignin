@@ -8,13 +8,14 @@ from datetime import datetime
 
 from google.appengine.ext import ndb
 
+template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+jinja_environment = jinja2.Environment(
+  loader=jinja2.FileSystemLoader(template_dir))
+
 class CheckIn(ndb.Model):
     name = ndb.StringProperty()
     location_atm = ndb.StringProperty()
     time_stamp = ndb.DateTimeProperty(auto_now_add=True)
-template_dir = os.path.join(os.path.dirname(__file__), 'templates')
-jinja_environment = jinja2.Environment(
-  loader=jinja2.FileSystemLoader(template_dir))
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -27,7 +28,7 @@ class MainHandler(webapp2.RequestHandler):
             check_in.put()
             self.redirect('/checkin')
 
-class CheckInHandler(webapp2.RequestHandler):
+class CheckInHandler(webapp2.RequestHandler, ndb.Model):
     def get(self):
         self.response.write('Check in:<br>')
         check_in_query = CheckIn.query().order(CheckIn.time_stamp).filter(CheckIn.time_stamp >= datetime.now().replace( hour=0 ))
