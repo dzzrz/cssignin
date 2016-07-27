@@ -63,9 +63,14 @@ class MenuHandlerGoogle(webapp2.RequestHandler):
         template = template = jinja_environment.get_template('google.html')
         self.response.out.write(template.render())
 
+class AboutHandler(webapp2.RequestHandler):
+    def get(self):
+        template = template = jinja_environment.get_template('about.html')
+        self.response.out.write(template.render())
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/dab.html', MenuHandlerHome),
     ('/display.html', MenuHandlerSignIn),
-    ('/google.html', MenuHandlerGoogle)
+    ('/google.html', MenuHandlerGoogle),
+    ('/about.html',AboutHandler),
 ], debug=True)
