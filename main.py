@@ -1,9 +1,11 @@
+
 import jinja2
 import os
 import webapp2
 import datetime
 import urllib2
 import json
+import logging
 from datetime import datetime
 import time
 import logging
@@ -29,11 +31,12 @@ class MainHandler(webapp2.RequestHandler):
         check_in.put()
         my_checkins = {"checkin": "<tr><td> + carl + </td></tr> "}
         table_checkin = ""
-        check_in_query = CheckIn.query().order(CheckIn.time_stamp).filter(CheckIn.time_stamp >= datetime.now().replace( hour=0 ))
+        check_in_query = CheckIn.query().order(CheckIn.time_stamp).filter(CheckIn.time_stamp >= datetime.now().replace( hour=4 ))
         check_ins = check_in_query.fetch(limit=30)
+        logging.info(check_ins)
         check_ins.append(check_in)
         for check_in in check_ins:
-            table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + "unavailable" + "<td>" + check_in.location_atm + "<td>" + str(check_in.time_stamp)[11:16] + "</td></tr>"
+            table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + check_in.location_atm + "<td>" + str(check_in.time_stamp)[11:16] + "</td></tr>"
         my_checkins = {"checkin": table_checkin}
         template = jinja_environment.get_template('display.html')
         self.response.out.write(template.render(my_checkins))
@@ -50,7 +53,7 @@ class MenuHandlerSignIn(webapp2.RequestHandler):
         check_in_query = CheckIn.query().order(CheckIn.time_stamp).filter(CheckIn.time_stamp >= datetime.now().replace( hour=4 ))
         check_ins = check_in_query.fetch(limit=30)
         for check_in in check_ins:
-            table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + "unavailable" + "<td>" + check_in.location_atm + "<td>" + str(check_in.time_stamp)[11:16] + "</td></tr>"
+            table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + check_in.location_atm + "<td>" + str(check_in.time_stamp)[11:16] + "</td></tr>"
         my_checkins = {"checkin": table_checkin}
         template = jinja_environment.get_template('display.html')
         self.response.out.write(template.render(my_checkins))
