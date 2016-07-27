@@ -10,7 +10,8 @@ $(document).ready( function() {
      minutes = minutes < 10 ? '0'+minutes : minutes;
 
     var clockDiv = document.getElementById('clock');
-    clockDiv.innerText = hours + ":" + minutes + " " + ampm;
+    if (clockDiv != null)
+      clockDiv.innerText = hours + ":" + minutes + " " + ampm;
   }
 
   displayTime();
