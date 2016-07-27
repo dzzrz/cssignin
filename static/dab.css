@@ -73,7 +73,7 @@ input {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 700px;
+  height: 770px;
 
  }
 .night {
@@ -90,6 +90,7 @@ input {
   font-size: 40px;
   text-align: left;
   padding-left: 50px;
+  padding-top: 20px;
   text-shadow: 2px 2px 0px black;
 }
 
