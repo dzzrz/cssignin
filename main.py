@@ -6,6 +6,7 @@ import urllib2
 import json
 from datetime import datetime
 import time
+import logging
 from google.appengine.ext import ndb
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
@@ -32,7 +33,7 @@ class MainHandler(webapp2.RequestHandler):
         check_ins = check_in_query.fetch(limit=30)
         check_ins.append(check_in)
         for check_in in check_ins:
-            table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + "unavailable" + "<td>" + check_in.location_atm + "<td>" + str(check_in.time_stamp) + "</td></tr>"
+            table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + "unavailable" + "<td>" + check_in.location_atm + "<td>" + str(check_in.time_stamp)[11:16] + "</td></tr>"
         my_checkins = {"checkin": table_checkin}
         template = jinja_environment.get_template('display.html')
         self.response.out.write(template.render(my_checkins))
@@ -49,7 +50,7 @@ class MenuHandlerSignIn(webapp2.RequestHandler):
         check_in_query = CheckIn.query().order(CheckIn.time_stamp).filter(CheckIn.time_stamp >= datetime.now().replace( hour=4 ))
         check_ins = check_in_query.fetch(limit=30)
         for check_in in check_ins:
-            table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + "unavailable" + "<td>" + check_in.location_atm + "<td>" + str(check_in.time_stamp) + "</td></tr>"
+            table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + "unavailable" + "<td>" + check_in.location_atm + "<td>" + str(check_in.time_stamp)[11:16] + "</td></tr>"
         my_checkins = {"checkin": table_checkin}
         template = jinja_environment.get_template('display.html')
         self.response.out.write(template.render(my_checkins))
