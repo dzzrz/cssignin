@@ -17,7 +17,7 @@ jinja_environment = jinja2.Environment(
 
 class CheckIn(ndb.Model):
     name = ndb.StringProperty()
-    location_atm = ndb.StringProperty()
+    location_atm = ndb.StringProperty(default="unknown")
     time_stamp = ndb.DateTimeProperty(auto_now_add=True)
 
 class MainHandler(webapp2.RequestHandler):
@@ -26,20 +26,22 @@ class MainHandler(webapp2.RequestHandler):
         self.response.out.write(template.render())
     def post(self):
         name = self.request.get('name')
+        name_query = CheckIn.query().filter(CheckIn.name == name)
+        for result in name_query.fetch():
+            result.key.delete()
         location_atm = self.request.get('location_atm')
         check_in = CheckIn(name=name, location_atm=location_atm)
         check_in.put()
-        my_checkins = {"checkin": "<tr><td> + carl + </td></tr> "}
         table_checkin = ""
-        check_in_query = CheckIn.query().order(CheckIn.time_stamp).filter(CheckIn.time_stamp >= datetime.now().replace( hour=4 ))
+        check_in_query = CheckIn.query().order(CheckIn.time_stamp)
         check_ins = check_in_query.fetch(limit=30)
-        logging.info(check_ins)
         check_ins.append(check_in)
         for check_in in check_ins:
             table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + check_in.location_atm + "<td>" + str(check_in.time_stamp)[11:16] + "</td></tr>"
         my_checkins = {"checkin": table_checkin}
         template = jinja_environment.get_template('display.html')
         self.response.out.write(template.render(my_checkins))
+
 
 class MenuHandlerHome(webapp2.RequestHandler):
     def get(self):
@@ -48,9 +50,8 @@ class MenuHandlerHome(webapp2.RequestHandler):
 
 class MenuHandlerSignIn(webapp2.RequestHandler):
     def get(self):
-        my_checkins = {"checkin": "<tr><td> + carl + </td></tr> "}
         table_checkin = ""
-        check_in_query = CheckIn.query().order(CheckIn.time_stamp).filter(CheckIn.time_stamp >= datetime.now().replace( hour=4 ))
+        check_in_query = CheckIn.query().order(CheckIn.time_stamp)
         check_ins = check_in_query.fetch(limit=30)
         for check_in in check_ins:
             table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + check_in.location_atm + "<td>" + str(check_in.time_stamp)[11:16] + "</td></tr>"
@@ -67,10 +68,17 @@ class AboutHandler(webapp2.RequestHandler):
     def get(self):
         template = template = jinja_environment.get_template('about.html')
         self.response.out.write(template.render())
+
+class CalendarHandler(webapp2.RequestHandler):
+    def get(self):
+        template = template = jinja_environment.get_template('calendar.html')
+        self.response.out.write(template.render())
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/dab.html', MenuHandlerHome),
     ('/display.html', MenuHandlerSignIn),
     ('/google.html', MenuHandlerGoogle),
-    ('/about.html',AboutHandler),
+    ('/about.html', AboutHandler),
+    ('/calendar.html', CalendarHandler)
 ], debug=True)
