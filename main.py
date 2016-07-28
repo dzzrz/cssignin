@@ -6,10 +6,12 @@ import datetime
 import urllib2
 import json
 import logging
-from datetime import datetime
 import time
 import logging
 from google.appengine.ext import ndb
+from datetime import datetime
+import urllib2
+import json
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(
@@ -18,7 +20,8 @@ jinja_environment = jinja2.Environment(
 class CheckIn(ndb.Model):
     name = ndb.StringProperty()
     location_atm = ndb.StringProperty(default="unknown")
-    time_stamp = ndb.DateTimeProperty(auto_now_add=True)
+    time_stamp = ndb.TimeProperty(auto_now_add=True)
+    date_stamp = ndb.DateProperty(auto_now_add=True)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -33,7 +36,7 @@ class MainHandler(webapp2.RequestHandler):
         check_in = CheckIn(name=name, location_atm=location_atm)
         check_in.put()
         table_checkin = ""
-        check_in_query = CheckIn.query().order(CheckIn.time_stamp)
+        check_in_query = CheckIn.query().order(CheckIn.date_stamp).filter(CheckIn.date_stamp >= datetime.today())
         check_ins = check_in_query.fetch(limit=30)
         check_ins.append(check_in)
         for check_in in check_ins:
@@ -51,7 +54,7 @@ class MenuHandlerHome(webapp2.RequestHandler):
 class MenuHandlerSignIn(webapp2.RequestHandler):
     def get(self):
         table_checkin = ""
-        check_in_query = CheckIn.query().order(CheckIn.time_stamp)
+        check_in_query = CheckIn.query().order(CheckIn.date_stamp).filter(CheckIn.date_stamp >= datetime.today())
         check_ins = check_in_query.fetch(limit=30)
         for check_in in check_ins:
             table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + check_in.location_atm + "<td>" + str(check_in.time_stamp)[11:16] + "</td></tr>"

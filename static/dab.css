@@ -192,3 +192,10 @@ tr:nth-child(odd) td {
 .bold {
   font-weight: 800;
 }
+
+.aw-widget-current {
+  position: absolute;
+  top: 190px;
+  right: 100px;
+  width: 500px;
+}
