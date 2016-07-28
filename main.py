@@ -16,8 +16,8 @@ jinja_environment = jinja2.Environment(
 class CheckIn(ndb.Model):
     name = ndb.StringProperty(required=True)
     location_atm = ndb.StringProperty(required=True)
-    date_stamp = ndb.DateProperty(auto_now_add=True)
-    time_stamp = ndb.TimeProperty(auto_now_add=True)
+    date_stamp = ndb.DateProperty(auto_now_add=True, required=True)
+    time_stamp = ndb.TimeProperty(auto_now_add=True, required=True)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -39,6 +39,11 @@ class MainHandler(webapp2.RequestHandler):
         check_ins.append(check_in)
         for check_in in check_ins:
             boston_hour = check_in.time_stamp.hour-4
+            minutes = check_in.time_stamp.minute
+            if minutes < 10:
+                zero = "0"
+            else:
+                zero = ""
             if boston_hour >= 13:
                 am_pm = "PM"
                 boston_hour=boston_hour-12
@@ -46,7 +51,7 @@ class MainHandler(webapp2.RequestHandler):
                 am_pm = "PM"
             else:
                 am_pm = "AM"
-            table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + check_in.location_atm + "<td>" + str(boston_hour) + ":" + str(check_in.time_stamp.minute) + " "+ am_pm +"</td></tr>"
+            table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + check_in.location_atm + "<td>" + str(boston_hour) + ":" + str(zero) + str(minutes) + " "+ am_pm +"</td></tr>"
         my_checkins = {"checkin": table_checkin}
         template = jinja_environment.get_template('display.html')
         self.response.out.write(template.render(my_checkins))
@@ -56,6 +61,7 @@ class MenuHandlerHome(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('dab.html')
         self.response.out.write(template.render())
+
 
 class MenuHandlerSignIn(webapp2.RequestHandler):
     def get(self):
@@ -71,6 +77,11 @@ class MenuHandlerSignIn(webapp2.RequestHandler):
         check_ins = check_in_query.fetch(limit=30)
         for check_in in check_ins:
             boston_hour = check_in.time_stamp.hour-4
+            minutes = check_in.time_stamp.minute
+            if minutes < 10:
+                zero = "0"
+            else:
+                zero = ""
             if boston_hour >= 13:
                 am_pm = "PM"
                 boston_hour=boston_hour-12
@@ -78,7 +89,8 @@ class MenuHandlerSignIn(webapp2.RequestHandler):
                 am_pm = "PM"
             else:
                 am_pm = "AM"
-            table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + check_in.location_atm + "<td>" + str(boston_hour) + ":" + str(check_in.time_stamp.minute) + " "+ am_pm +"</td></tr>"
+            if check_in.name != "":
+                table_checkin = table_checkin + "<tr><td>" + check_in.name + "<td>" + check_in.location_atm + "<td>" + str(boston_hour) + ":" + str(zero) + str(minutes) + " "+ am_pm +"</td></tr>"
         my_checkins = {"checkin": table_checkin}
         template = jinja_environment.get_template('display.html')
         self.response.out.write(template.render(my_checkins))

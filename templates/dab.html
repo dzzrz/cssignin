@@ -13,7 +13,7 @@
 <body>
   <h1>
     <div>
-    <span class="C">C</span><span class="S">S</span><span class="S2">S</span>ign<span class="I">I</span>n
+      <span class="C">C</span><span class="S">S</span><span class="S2">S</span>ign<span class="I">I</span>n
     </div>
     <ul>
       <li class="menu"><a class="home" href="/dab.html">Home</a></li>
@@ -23,26 +23,25 @@
       <li class="menu" id="about"><a class="other" href="/about.html">About</a></li>
     </ul>
   </h1>
-  <div id='date'><script>
-    var months = new Array(
-    "January", "February", "March", "April",
-    "May", "June", "July", "August", "September",
-    "October", "November", "December");
-    var currentTime = new Date();
-    var month = currentTime.getMonth();
-    var day = currentTime.getDate();
-    var year = currentTime.getFullYear();
-    document.write(months[month] + " " + day + ", " + year);
-  </script></div>
+  <div id='date'>
+    <script>
+      var months = new Array(
+      "January", "February", "March", "April",
+      "May", "June", "July", "August", "September",
+      "October", "November", "December");
+      var currentTime = new Date();
+      var month = currentTime.getMonth();
+      var day = currentTime.getDate();
+      var year = currentTime.getFullYear();
+      document.write(months[month] + " " + day + ", " + year);
+    </script></div>
   <div id='clock'></div>
-  <a href="http://www.accuweather.com/en/us/boston-ma/02108/weather-forecast/348735" class="aw-widget-legal">
-<!--
-By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
--->
-</a><div id="awcc1469721727662" class="aw-widget-current"  data-locationkey="" data-unit="f" data-language="en-us" data-useip="true" data-uid="awcc1469721727662"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
+  <a href="http://www.accuweather.com/en/us/boston-ma/02108/weather-forecast/348735" class="aw-widget-legal"></a>
+  <div id="awcc1469721727662" class="aw-widget-current"  data-locationkey="" data-unit="f" data-language="en-us" data-useip="true" data-uid="awcc1469721727662"></div>
+  <script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
   <form action="/" method="post">
     Enter your name: <input type="text" name="name"> <br>
     Enter your location: <input type="text" name="location_atm">
-      <input type="submit">
+    <input type="submit">
   </form>
 </body>
