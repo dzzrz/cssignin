@@ -42,11 +42,6 @@ body {
   text-shadow: 2px 2px 0px black;
 }
 
-h2 {
-  text-align: center;
-  font-size: 40px;
-}
-
 form {
   font-size: 40px;
   font-family: 'Product Sans', Arial, sans-serif;
@@ -192,6 +187,44 @@ tr:nth-child(odd) td {
 .bold {
   font-weight: 800;
 }
+
+<<<<<<< HEAD
+h2 {
+  font-family: 'Product Sans', Arial, sans-serif;
+  font-size: 40px;
+  color: white;
+  text-shadow: 2px 2px 0px black;
+  text-align: center;
+}
+
+h3 {
+  font-family: 'Product Sans', Arial, sans-serif;
+  font-size: 25px;
+  text-shadow: 2px 2px 0px black;
+  color: white;
+  text-align: left;
+  padding-left: 20px;
+  text-decoration: underline;
+}
+
+p {
+  font-family: 'Product Sans', Arial, sans-serif;
+  font-size: 20px;
+  text-shadow: 2px 2px 0px black;
+  color: white;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+h4 {
+  font-family: 'Product Sans', Arial, sans-serif;
+  font-size: 25px;
+  text-shadow: 2px 2px 0px black;
+  color: white;
+  text-align: left;
+  padding-left: 20px;
+  text-decoration: underline;
 
 .aw-widget-current {
   position: absolute;
