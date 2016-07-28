@@ -113,14 +113,35 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+
+.other:hover
+ {
   background-color: #555;
   color: white;
+}
+
+/*DON'T FORGET TO HAVE COLOR CHANGE TO TRANSPARENT WHEN THE TAB IS COLORED!*/
+.home {
+  background-color: blue;
+}
+
+.contact {
+  background-color: red;
+}
+
+.list {
+  background-color: yellow;
+  color:black;
+}
+
+.about {
+  background-color:green;  
 }
 
 .menu {
   font-size: 25px;
 }
+
 
 li#about {
   float:right;
@@ -162,16 +183,6 @@ tr:nth-child(odd) td {
   background: rgba(254,254,254, 0.7)
 }
 
-/* This is commenting out hovering over and changing color feature
-tr td:hover {
-background: #666; color: #FFF;
-}
-
-Hover cell effect!
-
-*/
-
-iframe {
-margin-top: 13px;
-font-family: Helvetica;
+.bold {
+  font-weight: 800;
 }
