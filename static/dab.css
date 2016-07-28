@@ -134,6 +134,11 @@ li a {
   color:black;
 }
 
+.calendar {
+  background-color: white;
+  color:black;
+}
+
 .about {
   background-color:green;
 }
