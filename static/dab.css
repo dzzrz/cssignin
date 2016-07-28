@@ -140,7 +140,7 @@ li a {
 }
 
 .about {
-  background-color:green;  
+  background-color:green;
 }
 
 .menu {
@@ -187,6 +187,7 @@ tr:nth-child(even) td {
 tr:nth-child(odd) td {
   background: rgba(254,254,254, 0.7)
 }
+
 
 .bold {
   font-weight: 800;
