@@ -228,3 +228,27 @@ h4 {
   text-align: left;
   padding-left: 20px;
   text-decoration: underline;
+
+}
+
+.Daniel, .Angelica, .Brenda {
+   display: block; width: 33%;
+   float: left;
+   padding-top: 0.5px;
+}
+
+.Daniel {
+     padding-left: 10px;
+}
+
+.Daniel2 {
+     text-decoration: underline;
+}
+
+.Angelica2 {
+   text-decoration: underline;
+ }
+
+.Brenda2 {
+     text-decoration: underline;
+ }
