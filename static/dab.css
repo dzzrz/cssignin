@@ -185,6 +185,13 @@ tr:nth-child(odd) td {
   font-weight: 800;
 }
 
+.aw-widget-current {
+  position: absolute;
+  top: 190px;
+  right: 100px;
+  width: 500px;
+}
+
 h2 {
   font-family: 'Product Sans', Arial, sans-serif;
   font-size: 40px;
@@ -221,10 +228,3 @@ h4 {
   text-align: left;
   padding-left: 20px;
   text-decoration: underline;
-
-.aw-widget-current {
-  position: absolute;
-  top: 190px;
-  right: 100px;
-  width: 500px;
-}
